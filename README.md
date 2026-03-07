@@ -20,71 +20,75 @@ This repository demonstrates various use cases and examples for managing user ac
 
 <h2>Use Cases</h2>
 
-- Account Lockouts
-  - How to configure account lockout policies via Group Policy.
-  - Simulating account lockouts by attempting multiple failed login attempts.
-  - Unlocking a locked account and resetting the password.
+### Account Lockout Policy
 
-- Enabling and Disabling Accounts
-  - Disabling and enabling a user account within Active Directory.
-  - Observing the behavior and error messages when attempting to log in with a disabled account.
+* Configure **Account Lockout Policies** through **Group Policy Management**.
+* Simulate an account lockout by entering an incorrect password multiple times on the client machine.
+* Verify the lockout event from the **Domain Controller**.
+* Unlock the affected user account and reset the password using **Active Directory Users and Computers (ADUC)**.
 
-- Log Observations
-  - How to observe and analyze security logs from both the Domain Controller and client machine.
-  - Identifying failed login attempts, account lockouts, and other relevant events in the logs.
+### Enabling and Disabling User Accounts
+
+* Disable a user account through **Active Directory Users and Computers (ADUC)**.
+* Attempt to log in from the client machine using the disabled account.
+* Observe the authentication error message.
+* Re-enable the account and confirm successful login.
+
+### Security Log Monitoring
+
+* Access **Event Viewer → Windows Logs → Security** on both the **Domain Controller** and **Client VM**.
+* Analyze log entries related to authentication events.
+* Identify events such as:
+
+  * Failed login attempts
+  * Account lockouts
+  * Successful login activity
+* Use these logs to understand how Active Directory records and tracks authentication behavior.
+
 
 <h2>Instructions</h2>
 
 **1. Getting Started**
 
-- Log in to the Domain Controller (dc-1) using an administrator account.
-- Ensure you have a user account created in Active Directory for testing purposes.
+Begin by logging in to the Domain Controller (DC-1) using an administrator account. Verify that a test user account exists in Active Directory, as this account will be used to simulate login attempts and observe account lockout behavior.
 
 **2. Configuring Account Lockout Policies**
 
-- Open the Group Policy Management Console (GPMC) and configure the Account Lockout Policy to lock the account after 5 failed login attempts.
-- Test by attempting 6 failed logins with a bad password.
+Open the Group Policy Management Console (GPMC) on the Domain Controller and navigate to the Account Lockout Policy settings. Configure the policy to lock a user account after five failed login attempts, then apply the policy changes. To test the configuration, attempt to log in with the test account using an incorrect password six times to trigger the account lockout.
 
-<img width="448" alt="Screenshot 2025-01-23 at 6 43 36 PM" src="https://github.com/user-attachments/assets/0d424068-0be0-4580-be80-cc4abc554b0e" />
-<img width="395" alt="Screenshot 2025-01-23 at 6 45 12 PM" src="https://github.com/user-attachments/assets/f105c6d8-ae9c-4703-82d6-1704a238d0be" />
-<img width="791" alt="Screenshot 2025-01-23 at 6 45 33 PM" src="https://github.com/user-attachments/assets/32bc91e8-8b5f-4fbb-98a2-6ef4ea6ad1b1" />
-<img width="859" alt="Screenshot 2025-01-23 at 6 46 31 PM" src="https://github.com/user-attachments/assets/8e1203c0-dcf7-4c9a-b53a-89bbf340de0f" />
-<img width="436" alt="Screenshot 2025-01-23 at 6 47 23 PM" src="https://github.com/user-attachments/assets/9572d678-b0b3-433c-b281-fcb3735a1cbb" />
+<img width="400" height="225" alt="image" src="https://github.com/user-attachments/assets/f15bcc2c-5112-4fb0-b0c5-12dc21961fbb" />
+<img width="400" height="234" alt="image" src="https://github.com/user-attachments/assets/53df3a13-57c8-4b62-9692-663ee888a2b5" />
+<img width="400" height="129" alt="image" src="https://github.com/user-attachments/assets/e5d3875b-f1dc-44e4-80c7-ac70263398b4" />
+<img width="256" height="197" alt="image" src="https://github.com/user-attachments/assets/d022e2d7-06d2-498d-8c8d-78492af48d33" />
 
 
 **3. Account Lockout Behavior** 
 
-- Observe that the account locks after the 5th failed attempt.
-- Unlock the account and reset the password for testing.
+After five consecutive failed login attempts, the user account becomes locked according to the configured policy. The account can then be unlocked through **Active Directory Users and Computers (ADUC)**, and the password may be reset if needed to continue testing.
 
-<img width="527" alt="Screenshot 2025-01-23 at 6 47 37 PM" src="https://github.com/user-attachments/assets/1ab65701-9f50-43eb-b3fd-555272c876d7" />
-<img width="419" alt="Screenshot 2025-01-23 at 6 48 22 PM" src="https://github.com/user-attachments/assets/5e8c41e6-70cd-475a-86f4-ff9ad1967d42" />
-<img width="931" alt="Screenshot 2025-01-23 at 6 48 37 PM" src="https://github.com/user-attachments/assets/8ced3e12-bd2c-4a9f-ab8f-54e3f632ea6f" />
-<img width="417" alt="Screenshot 2025-01-23 at 6 48 45 PM" src="https://github.com/user-attachments/assets/7daf1604-4a14-4659-bb9d-5d195026e2cc" />
-<img width="425" alt="Screenshot 2025-01-23 at 6 49 20 PM" src="https://github.com/user-attachments/assets/00a1e4a6-5db1-49d4-b26b-42242882fce2" />
-<img width="500" alt="Screenshot 2025-01-23 at 6 51 14 PM" src="https://github.com/user-attachments/assets/d0d1b6bf-c632-4152-a644-ddb9e9fcd43b" />
-<img width="387" alt="Screenshot 2025-01-23 at 6 51 20 PM" src="https://github.com/user-attachments/assets/4d8c71f1-3a68-4324-b062-68393155958a" />
+<img width="400" height="244" alt="image" src="https://github.com/user-attachments/assets/bea9bdae-e79d-46e9-9175-89a3760b4bfa" />
+<img width="190" height="248" alt="image" src="https://github.com/user-attachments/assets/ed20c0b5-df77-47f8-8d8a-92e7c9e4d120" />
+<img width="250" height="256" alt="image" src="https://github.com/user-attachments/assets/cbd6bd50-05ce-4a44-a5d1-64d35a38d594" />
+<img width="469" height="254" alt="image" src="https://github.com/user-attachments/assets/a91983e7-47a5-435f-9659-d770fa36073d" />
+<img width="256" height="202" alt="image" src="https://github.com/user-attachments/assets/0db79905-bd6c-43ba-bc27-17d636e6c15f" />
+<img width="400" height="192" alt="image" src="https://github.com/user-attachments/assets/8c193ac4-52ea-4a08-95d5-1931ed26fa77" />
 
 
 **4. Enabling and Disabling Accounts**
 
-- Disable a user account in Active Directory.
-- Attempt to log in with the disabled account and observe the error message.
-- Re-enable the account and attempt to log in again.
+This exercise demonstrates how administrators control user access within Active Directory. A user account is first disabled in **Active Directory Users and Computers (ADUC)**, and a login attempt is made to observe the authentication error generated by the disabled account. The account is then re-enabled, and another login attempt is performed to verify that access has been successfully restored.
 
-<img width="503" alt="Screenshot 2025-01-23 at 6 51 51 PM" src="https://github.com/user-attachments/assets/45750d32-a894-49a1-945e-b9a65adeff5e" />
-<img width="392" alt="Screenshot 2025-01-23 at 7 41 45 PM" src="https://github.com/user-attachments/assets/a0a34457-eabc-463c-be6c-5b3d01e7ca2d" />
-<img width="543" alt="Screenshot 2025-01-23 at 6 52 54 PM" src="https://github.com/user-attachments/assets/49d4c42e-20c9-4d65-bf21-5663d64f6da7" />
+<img width="400" height="169" alt="image" src="https://github.com/user-attachments/assets/9ae59e05-008f-41e7-91cd-a754c087607d" />
+<img width="609" height="212" alt="image" src="https://github.com/user-attachments/assets/1334ea11-fba1-40af-819b-20ae6a73b6e2" />
+<img width="400" height="172" alt="image" src="https://github.com/user-attachments/assets/6d5952c8-c72d-4a96-88dc-2903e3bb100c" />
 
-
-  
 **5. Observing Logs**
 
-- View the security logs on the Domain Controller to see the details of login attempts and account lockouts.
-- Check the client machine’s event logs for any relevant information regarding login failures.
+This step involves reviewing authentication activity through system logs. The **Security logs** on the **Domain Controller** are examined to identify events related to login attempts and account lockouts. Additionally, the **Event Viewer logs** on the client machine are reviewed to gather further details about authentication failures and related login events.
 
-<img width="432" alt="Screenshot 2025-01-23 at 7 42 02 PM" src="https://github.com/user-attachments/assets/963d4b20-c8b6-45da-9095-8abe250660c2" />
-<img width="1402" alt="Screenshot 2025-01-23 at 7 42 24 PM" src="https://github.com/user-attachments/assets/bca6d2a0-a992-4414-8e3d-54c34ecea5f2" />
+<img width="400" height="221" alt="image" src="https://github.com/user-attachments/assets/8e737161-a05a-47f1-a77b-9299c4dad242" />
+<img width="400" height="287" alt="image" src="https://github.com/user-attachments/assets/4c60fb11-fb62-48b9-b926-a795951315b2" />
+
 
 <h2>Purpose</h2>
 The purpose of this repository is to provide hands-on examples and insights into managing Active Directory accounts. It highlights practical scenarios that demonstrate how to configure policies, manage account states, and troubleshoot login issues using various tools and technologies. This repository is designed to help IT professionals and system administrators gain a deeper understanding of Active Directory management.
