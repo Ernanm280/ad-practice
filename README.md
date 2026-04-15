@@ -71,7 +71,7 @@ I logged back into **Client-1** to trigger an account lockout by intentionally e
 <br>
 <br>
 
-The account can then be unlocked through `Active Directory Users and Computers (ADUC)`, and the password may be reset if needed to continue testing. I opened **Active Directory Users and Computers** and selected the **_EMPLOYEES** folder under **mydomain.com**. I identified the user account, opened the account properties, and checked the **Unlock Account** box following repeated failed login attempts. Select **OK** to close the Properties window. Then, right-click the affected user and choose **“Reset Password…”**. This option allows you to reset the password and unlock the account at the same time. For this demonstration, no changes are applied.
+The account can then be unlocked through `Active Directory Users and Computers (ADUC)`, and the password may be reset if needed to continue testing. I opened **Active Directory Users and Computers** and selected the **_EMPLOYEES** folder under **mydomain.com**. I identified the user account, opened the account properties, and checked the **Unlock Account** box following repeated failed login attempts. Selected **OK** to close the Properties window. Then, right-click the affected user and choose **“Reset Password…”**. This option allows you to reset the password and unlock the account at the same time. For this demonstration, no changes are applied. 
 
 <img width="884" height="789" alt="Screenshot 2026-04-11 194311" src="https://github.com/user-attachments/assets/a2b0f3c6-0f7d-4aea-b7f5-11af5792b5b7" />
 
