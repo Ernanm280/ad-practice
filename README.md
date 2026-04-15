@@ -59,6 +59,9 @@ Once logged in, I opened the `Group Policy Management Console (GPMC)` on the Dom
 <img width="629" height="422" alt="Screenshot 2026-04-11 193047" src="https://github.com/user-attachments/assets/d295abd8-f351-49f4-8bd5-f427fbb490b8" />
 <img width="675" height="488" alt="Screenshot 2026-04-11 193303" src="https://github.com/user-attachments/assets/357f467e-ec49-4b86-95c5-4c7adc25577d" />
 
+<br>
+<br>
+
 **3. Account Lockout Behavior** 
 
 I logged back into **Client-1** to trigger an account lockout by intentionally entering incorrect credentials for testing purposes. I use one of the newly generated users in the **_EMPLOYEES (OU)** to initiate Remote Desktop. After five consecutive failed login attempts, the user account becomes locked according to the configured policy. 
@@ -78,6 +81,9 @@ The account can then be unlocked through `Active Directory Users and Computers (
 To verify that the account has been unlocked or accessible, I logged back in using the test user's credentials. I opened **PowerShell** and ran the `whoami` command to verify the currently logged-in user, confirming the account is authenticated within the domain.
 
 <img width="711" height="341" alt="Screenshot 2026-04-11 195201" src="https://github.com/user-attachments/assets/ab34b59f-0b91-4299-a58e-1834e52c1f1a" />
+
+<br>
+<br>
 
 **4. Enabling and Disabling Accounts**
 
@@ -99,6 +105,8 @@ I then re-enabled the user account in **Active Directory Users and Computers** b
 
 <img width="580" height="378" alt="Screenshot 2026-04-11 195521" src="https://github.com/user-attachments/assets/f1697fdf-8445-4b98-9598-211c10139bab" />
 
+<br>
+<br>
 
 **5. Observing Logs**
 
