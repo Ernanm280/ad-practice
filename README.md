@@ -110,10 +110,14 @@ I then re-enabled the user account in **Active Directory Users and Computers** b
 
 **5. Observing Logs**
 
-This step involves reviewing authentication activity through system logs. The **Security logs** on the **Domain Controller** are examined to identify events related to login attempts and account lockouts. Additionally, the **Event Viewer logs** on the client machine are reviewed to gather further details about authentication failures and related login events.
+This step involves reviewing authentication activity through system logs. On the Domain Controller, I navigated to
+Event Viewer → Windows Logs → Security, where authentication events are recorded and audited. 
+
+Using **Event Viewer** on the Domain Controller, I analyzed Security logs to track authentication events. Repeated failed login attempts were logged under Event ID 4776 (Credential Validation), providing visibility into invalid credential usage and reinforcing the importance of monitoring authentication activity in a domain environment. The **Security logs** on the **Domain Controller** are examined to identify events related to login attempts and account lockouts.
 
 <img width="771" height="557" alt="Screenshot 2026-04-11 200025" src="https://github.com/user-attachments/assets/ca8eafc4-a1a3-4ef0-a1c8-3e75af574c66" />
 
+Note: In a production environment, monitoring these events is essential for identifying suspicious activity, supporting incident response, and maintaining overall domain security.
 
 <h2>Purpose</h2>
 The purpose of this repository is to provide hands-on examples and insights into managing Active Directory accounts. It highlights practical scenarios that demonstrate how to configure policies, manage account states, and troubleshoot login issues using various tools and technologies. This repository is designed to help IT professionals and system administrators gain a deeper understanding of Active Directory management.
