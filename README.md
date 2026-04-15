@@ -64,7 +64,7 @@ Once logged in, I opened the `Group Policy Management Console (GPMC)` on the Dom
 
 **3. Account Lockout Behavior** 
 
-I logged back into **Client-1** to trigger an account lockout by intentionally entering incorrect credentials for testing purposes. I use one of the newly generated users in the **_EMPLOYEES (OU)** to initiate Remote Desktop. After five consecutive failed login attempts, the user account becomes locked according to the configured policy. 
+I logged back into **Client-1** to trigger an account lockout by intentionally entering incorrect credentials for testing purposes. I used one of the newly generated users in the **_EMPLOYEES (OU)** to initiate Remote Desktop. After five consecutive failed login attempts, the user account becomes locked according to the configured policy. 
 
 <img width="695" height="604" alt="Screenshot 2026-04-11 194004" src="https://github.com/user-attachments/assets/9b6351af-43b0-499e-9851-4f70819a5b38" />
 
