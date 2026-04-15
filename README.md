@@ -85,9 +85,15 @@ This exercise demonstrates how administrators control user access within Active 
 
 <img width="635" height="356" alt="Screenshot 2026-04-11 195251" src="https://github.com/user-attachments/assets/9afa49dd-c6b4-4e0b-9015-22b8f83b525c" />
 
+<br>
+<br> 
+
 When attempting to sign in to the account using Remote Desktop, an error message confirmed that the account was disabled, preventing access to the system.
 
 <img width="663" height="439" alt="Screenshot 2026-04-11 195401" src="https://github.com/user-attachments/assets/09b50edb-5030-47f5-a93e-2acd155cd4b1" />
+
+<br>
+<br>
 
 I then re-enabled the user account in **Active Directory Users and Computers** by right-clicking the account and selecting **Enable Account**, restoring access to the domain. Another login attempt is performed to verify that access has been successfully restored.
 
