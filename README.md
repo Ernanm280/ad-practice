@@ -54,40 +54,51 @@ Begin by logging in to the Domain Controller `DC-1` using an administrator accou
 
 **2. Configuring Account Lockout Policies**
 
-Open the `Group Policy Management Console (GPMC)` on the Domain Controller and navigate to the Account Lockout Policy settings. Configure the policy to lock a user account after five failed login attempts, then apply the policy changes. To test the configuration, attempt to log in with the test account using an incorrect password six times to trigger the account lockout.
+Once logged in, I opened the `Group Policy Management Console (GPMC)` on the Domain Controller, navigated to **mydomain.com**, expanded the domain tree, selected → **Default Domain Policy**, then right-clicked and selected **Edit**. In the **Group Policy Management Editor** section, I navigated to Computer Configuration → Policies → Windows Settings → Security Settings → Account Policies → Account Lockout Policy, where I configured the account lockout threshold to trigger after **5** failed login attempts, helping defend against repeated unauthorized access attempts.
 
-<img width="400" height="225" alt="image" src="https://github.com/user-attachments/assets/f15bcc2c-5112-4fb0-b0c5-12dc21961fbb" />
-<img width="400" height="234" alt="image" src="https://github.com/user-attachments/assets/53df3a13-57c8-4b62-9692-663ee888a2b5" />
-<img width="400" height="129" alt="image" src="https://github.com/user-attachments/assets/e5d3875b-f1dc-44e4-80c7-ac70263398b4" />
-<img width="256" height="197" alt="image" src="https://github.com/user-attachments/assets/d022e2d7-06d2-498d-8c8d-78492af48d33" />
-
+<img width="629" height="422" alt="Screenshot 2026-04-11 193047" src="https://github.com/user-attachments/assets/d295abd8-f351-49f4-8bd5-f427fbb490b8" />
+<img width="675" height="488" alt="Screenshot 2026-04-11 193303" src="https://github.com/user-attachments/assets/357f467e-ec49-4b86-95c5-4c7adc25577d" />
 
 **3. Account Lockout Behavior** 
 
-After five consecutive failed login attempts, the user account becomes locked according to the configured policy. The account can then be unlocked through `Active Directory Users and Computers (ADUC)`, and the password may be reset if needed to continue testing.
+I logged back into **Client-1** to trigger an account lockout by intentionally entering incorrect credentials for testing purposes. I use one of the newly generated users in the **_EMPLOYEES (OU)** to initiate Remote Desktop. After five consecutive failed login attempts, the user account becomes locked according to the configured policy. 
 
-<img width="400" height="244" alt="image" src="https://github.com/user-attachments/assets/bea9bdae-e79d-46e9-9175-89a3760b4bfa" />
-<img width="190" height="248" alt="image" src="https://github.com/user-attachments/assets/ed20c0b5-df77-47f8-8d8a-92e7c9e4d120" />
-<img width="250" height="256" alt="image" src="https://github.com/user-attachments/assets/cbd6bd50-05ce-4a44-a5d1-64d35a38d594" />
-<img width="469" height="254" alt="image" src="https://github.com/user-attachments/assets/a91983e7-47a5-435f-9659-d770fa36073d" />
-<img width="256" height="202" alt="image" src="https://github.com/user-attachments/assets/0db79905-bd6c-43ba-bc27-17d636e6c15f" />
-<img width="400" height="192" alt="image" src="https://github.com/user-attachments/assets/8c193ac4-52ea-4a08-95d5-1931ed26fa77" />
+<img width="695" height="604" alt="Screenshot 2026-04-11 194004" src="https://github.com/user-attachments/assets/9b6351af-43b0-499e-9851-4f70819a5b38" />
 
+<br>
+<br>
+
+The account can then be unlocked through `Active Directory Users and Computers (ADUC)`, and the password may be reset if needed to continue testing. I opened **Active Directory Users and Computers** and selected the **_EMPLOYEES** folder under **mydomain.com**. I identified the user account, opened the account properties, and checked the **Unlock Account** box following repeated failed login attempts. Select **OK** to close the Properties window. Then, right-click the affected user and choose **“Reset Password…”**. This option allows you to reset the password and unlock the account at the same time. For this demonstration, no changes are applied.
+
+<img width="884" height="789" alt="Screenshot 2026-04-11 194311" src="https://github.com/user-attachments/assets/a2b0f3c6-0f7d-4aea-b7f5-11af5792b5b7" />
+
+<br>
+<br>
+
+To verify that the account has been unlocked or accessible, I logged back in using the test user's credentials. I opened **PowerShell** and ran the `whoami` command to verify the currently logged-in user, confirming the account is authenticated within the domain.
+
+<img width="711" height="341" alt="Screenshot 2026-04-11 195201" src="https://github.com/user-attachments/assets/ab34b59f-0b91-4299-a58e-1834e52c1f1a" />
 
 **4. Enabling and Disabling Accounts**
 
-This exercise demonstrates how administrators control user access within Active Directory. A user account is first disabled in `Active Directory Users and Computers (ADUC)`, and a login attempt is made to observe the authentication error generated by the disabled account. The account is then re-enabled, and another login attempt is performed to verify that access has been successfully restored.
+This exercise demonstrates how administrators control user access within Active Directory. A user account is first disabled in `Active Directory Users and Computers (ADUC)`. I right-clicked the user account and selected **Disable Account** to prevent the user from logging into the domain.
 
-<img width="400" height="169" alt="image" src="https://github.com/user-attachments/assets/9ae59e05-008f-41e7-91cd-a754c087607d" />
-<img width="609" height="212" alt="image" src="https://github.com/user-attachments/assets/1334ea11-fba1-40af-819b-20ae6a73b6e2" />
-<img width="400" height="172" alt="image" src="https://github.com/user-attachments/assets/6d5952c8-c72d-4a96-88dc-2903e3bb100c" />
+<img width="635" height="356" alt="Screenshot 2026-04-11 195251" src="https://github.com/user-attachments/assets/9afa49dd-c6b4-4e0b-9015-22b8f83b525c" />
+
+When attempting to sign in to the account using Remote Desktop, an error message confirmed that the account was disabled, preventing access to the system.
+
+<img width="663" height="439" alt="Screenshot 2026-04-11 195401" src="https://github.com/user-attachments/assets/09b50edb-5030-47f5-a93e-2acd155cd4b1" />
+
+I then re-enabled the user account in **Active Directory Users and Computers** by right-clicking the account and selecting **Enable Account**, restoring access to the domain. Another login attempt is performed to verify that access has been successfully restored.
+
+<img width="580" height="378" alt="Screenshot 2026-04-11 195521" src="https://github.com/user-attachments/assets/f1697fdf-8445-4b98-9598-211c10139bab" />
+
 
 **5. Observing Logs**
 
 This step involves reviewing authentication activity through system logs. The **Security logs** on the **Domain Controller** are examined to identify events related to login attempts and account lockouts. Additionally, the **Event Viewer logs** on the client machine are reviewed to gather further details about authentication failures and related login events.
 
-<img width="400" height="221" alt="image" src="https://github.com/user-attachments/assets/8e737161-a05a-47f1-a77b-9299c4dad242" />
-<img width="400" height="287" alt="image" src="https://github.com/user-attachments/assets/4c60fb11-fb62-48b9-b926-a795951315b2" />
+<img width="771" height="557" alt="Screenshot 2026-04-11 200025" src="https://github.com/user-attachments/assets/ca8eafc4-a1a3-4ef0-a1c8-3e75af574c66" />
 
 
 <h2>Purpose</h2>
