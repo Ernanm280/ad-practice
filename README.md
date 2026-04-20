@@ -8,6 +8,8 @@ This repository demonstrates various use cases and examples for managing user ac
 
 <h2>Environments and Technologies Used</h2>
 
+<img src="https://skillicons.dev/icons?i=azure,windows,powershell" />
+
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
 - Active Directory Domain Services
@@ -45,6 +47,8 @@ This repository demonstrates various use cases and examples for managing user ac
   * Successful login activity
 * Use these logs to understand how Active Directory records and tracks authentication behavior.
 
+> [!NOTE] 
+> This project builds upon a prior lab where the Azure environment, virtual machines, Active Directory Domain Services, and DNS configuration were initially deployed. <br /> [Step 2: Active Directory: Deploying Active Directory](https://github.com/Ernanm280/deploying-ad)
 
 <h2>Instructions</h2>
 
