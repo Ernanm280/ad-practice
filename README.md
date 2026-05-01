@@ -3,7 +3,7 @@
 </p>
 
 <h1>Active Directory Account Management</h1>
-This repository demonstrates various use cases and examples for managing user accounts in Active Directory (AD). It provides step-by-step instructions on common tasks, such as account lockouts, password resets, account enabling/disabling, and log observations.<br />
+This repository showcases hands-on experience managing user accounts within Active Directory (AD) through practical, real-world administrative tasks. It includes step-by-step implementations of essential account management functions such as password resets, account lockout resolution, enabling/disabling users, and monitoring authentication activity.<br />
 
 
 <h2>Environments and Technologies Used</h2>
